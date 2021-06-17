@@ -32,3 +32,4 @@ Route::post('/editaccount',[App\Http\Controllers\UserController::class, 'update'
 Route::get('/editpassword',[App\Http\Controllers\UserController::class, 'editpassword'])->name('editpassword');
 
 Route::post('/editpassword',[App\Http\Controllers\UserController::class, 'updatepassword'])->name('updatepassword');
+/*------------------------ MODIFICATION -------------------------------------------------------- */

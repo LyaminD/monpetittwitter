@@ -6,6 +6,9 @@ use Auth;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use App\Models\User;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Validation\Rules\Password;
+
 
 
 class UserController extends Controller
@@ -64,7 +67,7 @@ class UserController extends Controller
         $user = Auth::user();
         return view('editaccount', compact('user'));
     }
-    
+
 
     public function editpassword()
     {
@@ -79,14 +82,11 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-        $request->validate([
-            'password' => ['required', 'confirmed', '/^\S*(?=\S{8,})(?=\S*[A-Z])(?=\S*[\d])(?=\S*[\W])\S*$/'],
-            'password_confirmation' => ['required'],
-        ]);
         $user = Auth::user();
         $user->update($request->all());
+        return redirect()->route('compte');
     }
 
     /**
@@ -102,21 +102,24 @@ class UserController extends Controller
     public function updatepassword(Request $request)
     {
         $request->validate([
-            'password' => ['required', 'confirmed', '/^\S*(?=\S{8,})(?=\S*[A-Z])(?=\S*[\d])(?=\S*[\W])\S*$/'],
+            'password' => ['required', 'confirmed', Password::min(8)
+                ->letters()
+                ->mixedCase()
+                ->numbers()
+                ->symbols(),],
         ]);
         $newpassword = 'password';
         $utilisateur = Auth::user();
         $oldpassword = $utilisateur->password;
-        (Hash::check($newpassword, $oldpassword));
 
-        if{
+        if (Hash::check($newpassword, $oldpassword)) {
             $newpassword = $oldpassword;
             return redirect()->route('editpassword');
-        }else{
+        } else {
 
-        $utilisateur->password = bcrypt(request('password'));
-        $utilisateur->save();
-        return redirect()->route('compte');
+            $utilisateur->password = bcrypt(request('password'));
+            $utilisateur->save();
+            return redirect()->route('compte');
         }
     }
-} 
+}

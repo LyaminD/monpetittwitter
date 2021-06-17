@@ -8,6 +8,7 @@ use App\Models\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Validation\Rules\Password;
 
 class RegisterController extends Controller
 {
@@ -54,7 +55,12 @@ class RegisterController extends Controller
             'prenom' => ['required', 'string', 'max:255'],
             'tweetname' => ['required', 'string', 'max:255', 'unique:users'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'password' => ['required', 'string', '/^\S*(?=\S{8,})(?=\S*[A-Z])(?=\S*[\d])(?=\S*[\W])\S*$/', 'confirmed'],
+            'password' => ['required', 'string', Password::min(8)
+            ->letters()
+            ->mixedCase()
+            ->numbers()
+            ->symbols(),
+             'confirmed'],
         ]);
     }
 
