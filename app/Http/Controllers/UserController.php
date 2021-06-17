@@ -14,11 +14,11 @@ class UserController extends Controller
     {
         $this->middleware('auth');
     }
-   
+
     public function index()
     {
-       $user = Auth::user();
-       return view('user.compte', ['user'=> $user]);
+        $user = Auth::user();
+        return view('user.compte', ['user' => $user]);
     }
 
     /**
@@ -59,9 +59,17 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit()
     {
-        //
+        $user = Auth::user();
+        return view('editaccount', compact('user'));
+    }
+    
+
+    public function editpassword()
+    {
+        $user = Auth::user();
+        return view('editpassword', compact('user'));
     }
 
     /**
@@ -73,7 +81,12 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'password' => ['required', 'confirmed', '/^\S*(?=\S{8,})(?=\S*[A-Z])(?=\S*[\d])(?=\S*[\W])\S*$/'],
+            'password_confirmation' => ['required'],
+        ]);
+        $user = Auth::user();
+        $user->update($request->all());
     }
 
     /**
@@ -86,4 +99,24 @@ class UserController extends Controller
     {
         //
     }
-}
+    public function updatepassword(Request $request)
+    {
+        $request->validate([
+            'password' => ['required', 'confirmed', '/^\S*(?=\S{8,})(?=\S*[A-Z])(?=\S*[\d])(?=\S*[\W])\S*$/'],
+        ]);
+        $newpassword = 'password';
+        $utilisateur = Auth::user();
+        $oldpassword = $utilisateur->password;
+        (Hash::check($newpassword, $oldpassword));
+
+        if{
+            $newpassword = $oldpassword;
+            return redirect()->route('editpassword');
+        }else{
+
+        $utilisateur->password = bcrypt(request('password'));
+        $utilisateur->save();
+        return redirect()->route('compte');
+        }
+    }
+} 

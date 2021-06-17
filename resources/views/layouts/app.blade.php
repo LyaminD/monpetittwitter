@@ -42,13 +42,13 @@
                         @guest
                             @if (Route::has('login'))
                                 <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                                    <a class="nav-link" href="{{ route('login') }}">{{ __('Se connecter') }}</a>
                                 </li>
                             @endif
 
                             @if (Route::has('register'))
                                 <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Créer mon compte') }}</a>
                                 </li>
                             @endif
                         @else
@@ -56,15 +56,22 @@
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ Auth::user()->nom }}
                                 </a>
-                                <a  href="{{ route('compte') }}"  >
-                                   Mon compte
-                                </a>
+                               
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                 <a  href="{{ route('compte') }}"  >
+                                   Mon compte
+                                </a></br>
+                                <a  href="{{ route('editaccount') }}"  >
+                                   Modifier mes informations
+                                </a></br>
+                                <a  href="{{ route('editpassword') }}"  >
+                                   Modifier le mot de passe
+                                </a>
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
-                                        {{ __('Logout') }}
+                                        {{ __('Se déconnecter') }}
                                     </a>
 
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">

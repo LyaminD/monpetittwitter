@@ -54,7 +54,7 @@ class RegisterController extends Controller
             'prenom' => ['required', 'string', 'max:255'],
             'tweetname' => ['required', 'string', 'max:255', 'unique:users'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'password' => ['required', 'string', '/^\S*(?=\S{8,})(?=\S*[A-Z])(?=\S*[\d])(?=\S*[\W])\S*$/', 'confirmed'],
         ]);
     }
 
