@@ -25,11 +25,13 @@ Route::get('/compte',[App\Http\Controllers\UserController::class, 'index'])->nam
 
 /*------------------------ MODIFICATION DES INFOS DU COMPTE  ---------------------------- */
 Route::get('/editaccount',[App\Http\Controllers\UserController::class, 'edit'])->name('editaccount');
-
 Route::post('/editaccount',[App\Http\Controllers\UserController::class, 'update'])->name('updateaccount');
 
 /*------------------------ MODIFICATION DU MOT DE PASSE------------------------------------- */
 Route::get('/editpassword',[App\Http\Controllers\UserController::class, 'editpassword'])->name('editpassword');
-
 Route::post('/editpassword',[App\Http\Controllers\UserController::class, 'updatepassword'])->name('updatepassword');
-/*------------------------ MODIFICATION -------------------------------------------------------- */
+
+
+/*------------------------ PUBLICATION ET MODIF DES TWEETS -------------------------------------------------------- */
+Route::resource('/tweets',App\Http\Controllers\UserController::class)->except('index');
+
