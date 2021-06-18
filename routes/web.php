@@ -33,5 +33,5 @@ Route::post('/editpassword',[App\Http\Controllers\UserController::class, 'update
 
 
 /*------------------------ PUBLICATION ET MODIF DES TWEETS -------------------------------------------------------- */
-Route::resource('/tweets',App\Http\Controllers\UserController::class)->except('index');
+Route::resource('/tweets',App\Http\Controllers\TweetController::class)->except('index');
 

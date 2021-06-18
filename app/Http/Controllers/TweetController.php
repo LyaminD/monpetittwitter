@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Tweet;
+use Auth;
 
 class TweetController extends Controller
 {
@@ -13,7 +15,7 @@ class TweetController extends Controller
      */
     public function create()
     {
-        //
+     
     }
 
     /**
@@ -24,7 +26,19 @@ class TweetController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'content' => 'required', 'string','min:5','max:255',
+            'image' => '',
+            'tags' => '',            
+        ]);
+        $user = Auth::user();
+         Tweet::create([
+            'content' => $request->input('content'),
+            'image' => $request->input('image'),
+            'tags' => $request->input('tags'),   
+            'user_id' => $user->id,               
+        ]);
+        return redirect()->route('home');
     }
 
     /**

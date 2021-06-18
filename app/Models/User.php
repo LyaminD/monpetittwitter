@@ -22,6 +22,7 @@ class User extends Authenticatable
         'tweetname',
         'email',
         'password',
+        'imageprofil',
     ];
 
     /**

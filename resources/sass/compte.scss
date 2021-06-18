@@ -4,9 +4,13 @@ body {
     height: 100%;
     width: 100%;
     font-family: 'Cormorant', serif;
-    background: #262626
+    background: #262626;
+    color: #fff;
 }
-
+h1{
+    color: #fff;
+    text-align: center;
+}
 .container-fluid {
     margin-top: 200px !important
 }
@@ -129,11 +133,6 @@ hr {
         margin-right: 0 !important
     }
 }
-
-
-
-
-
 
 .profile-head {
     transform: translateY(5rem)

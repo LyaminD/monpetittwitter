@@ -7,6 +7,14 @@ use Illuminate\Database\Eloquent\Model;
 
 class Tweet extends Model
 {
+
+    protected $fillable = [
+        'content',
+        'tags',
+        'image',
+        'user_id',
+    ];  
+
     use HasFactory;
     public function user()
     {
