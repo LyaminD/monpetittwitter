@@ -11,7 +11,7 @@
                     <div class="profile mr-3"><img src="https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=80" alt="..." width="130" class="rounded mb-2 img-thumbnail"><a href="#" class="btn btn-outline-dark btn-sm btn-block">Changer la photo de profil</a></div>
 
                     <div class="media-body mb-5 text-dark">
-                        <h4 class="mt-0 mb-0">PSEUDO</h4>
+                        <h4 class="mt-0 mb-0">Yamms</h4>
                         <p class="small mb-4 text-dark"> <i class="fas fa-map-marker-alt mr-2"></i>New York</p>
                     </div>
                 </div>

@@ -73,7 +73,7 @@
                             <div class="col">
                                 <div class="d-flex flex-lg-row flex-column-reverse no-gutters justify-content-center">
                                     <div class="col-3 text-right"><img class="img-fluid" id="quotes" src="https://img.icons8.com/ultraviolet/40/000000/quote-left.png" width="110" height="110"></div>
-                                    <div class="col pr-lg-5"><img class=" img-1 mr-lg-5 " src="/public/images/image1.jpg"></div>
+                                    <div class="col pr-lg-5"><img class=" img-1 mr-lg-5 " src="https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=80" alt="..." width="130" class="rounded mb-2 img-thumbnail"></div>
                                 </div>
                             </div>
                         </div>
@@ -95,7 +95,7 @@
                     </div>
                     <div class="row justify-content-center">
                         <div class="col text-center justify-content-center ">
-                            <p class="bold text-center px-md-3"><img src="/public/images/image2.jpg" alt="">{{ $tweet->image}}</p>
+                            <p class="bold text-center px-md-3"><img src="https://images.unsplash.com/photo-1469594292607-7bd90f8d3ba4?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80" alt="" class="img-fluid rounded shadow-sm">{{ $tweet->image}}</p>
                         </div>
                     </div>
                     <div class="card-body text-center pb-3 ">
