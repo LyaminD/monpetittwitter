@@ -58,9 +58,9 @@ class TweetController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
-    {
-        //
+    public function edit(Tweet $tweet)
+    {   
+        return view('tweet.modiftweet', compact('tweet'));
     }
 
     /**
@@ -70,9 +70,19 @@ class TweetController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
-    {
-        //
+    public function update(Request $request,Tweet $tweet)
+    {  
+        $request->validate([
+            'content' => 'required', 'string','min:5','max:255',
+            'image' => '',
+            'tags' => '',            
+        ]);
+        $tweet->content=$request->input('content');
+        $tweet->tags=$request->input('tags');
+        $tweet->image=$request->input('image');
+        $tweet->save();
+
+        return redirect()->route('home');
     }
 
     /**

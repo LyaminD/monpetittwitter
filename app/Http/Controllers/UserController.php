@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+
 use Auth;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
@@ -22,6 +23,7 @@ class UserController extends Controller
     {
         $user = Auth::user();
         return view('user.compte', ['user' => $user]);
+
     }
 
     /**
