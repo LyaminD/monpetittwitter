@@ -107,21 +107,51 @@
 
                     </div>
                     <hr class="mt-auto mb-4">
-                    <div class="text-center"> <a href="{{route('tweets.edit',$tweet)}}"> <button>Modifier le tweet</button></a></div>
+                    <div class="text-center">
+                        @if (Auth::user()->can('update', $tweet))
+                        <a href="{{route('tweets.edit',$tweet)}}">
+                            <button>Modifier le tweet</button></a>
+                        @endif
+                    </div>
+                    @foreach($tweet->comments as $comment)
                     <div class="comments">
                         <div class="d-flex flex-row mb-2"> <img src="/public/images/image1.jpg" width="40" class="rounded-image">
-                            <div class="d-flex flex-column ml-2"> <span class="name">Daniel Frozer</span> <small class="comment-text">I like this alot! thanks alot</small>
-                                <div class="d-flex flex-row align-items-center status"> <small>Like</small> <small>Reply</small><small>18 mins</small> </div>
+                            <div class="d-flex flex-column ml-2">
+                                <span class="name">{{ $comment->user->tweetname}}</span>
+                                <small class="comment-text">{{ $comment->content}}</small>
+                                <small class="comment-text">{{ $comment->tags}}</small>
+                            </div>
+                            <div class="text-center">
+                                @if (Auth::user()->can('update', $comment))
+                                <a href="{{route('comments.edit',$comment)}}">
+                                    <button><i class="fa-solid fa-pencil"></i></button></a>
+                                @endif
+                            </div>
+                            <div class="text-center">
+                                @if (Auth::user()->can('delete', $comment))
+                                <a href="{{route('comments.delete',$comment)}}">
+                                    <button> <i class="fas fa-times-circle"></i></button></a>
+                                @endif
                             </div>
                         </div>
-                        <div class="d-flex flex-row mb-2"> <img src="/public/images/image1.jpg" width="40" class="rounded-image">
-                            <div class="d-flex flex-column ml-2"> <span class="name">Elizabeth goodmen</span> <small class="comment-text">Thanks for sharing!</small>
-                                <div class="d-flex flex-row align-items-center status"> <small>Like</small> <small>Reply</small><small>8 mins</small> </div>
-                            </div>
+                        @endforeach
+                        <div class="p-2">
+                            <form action="{{route('comments.store')}}" method="post">
+                                @csrf
+                                <div class="comments">
+                                    <h3>Commente !</h3>
+                                    <div class="comment-input"> <input type="text" name="content" class="form-control" placeholder="Comment">
+                                        <h3>Tags</h3>
+                                        <input type="text" name="tags" class="form-control" placeholder="Tags">
+                                        <h3>Joindre une image</h3>
+                                        <input type="text" name="image" class="form-control" placeholder="Images">
+                                        <div class="fonts"> <i class="fa fa-camera "></i> </div>
+                                        <button>Envoyer</button>
+                                    </div>
+                                </div>
+                            </form>
                         </div>
-                        <div class="comment-input"> <input type="text" class="form-control">
-                            <div class="fonts"> <i class="fa fa-camera"></i> </div>
-                        </div>
+
                     </div>
                 </div>
             </div>

@@ -35,4 +35,7 @@ Route::post('/editpassword',[App\Http\Controllers\UserController::class, 'update
 /*------------------------ PUBLICATION ET MODIF DES TWEETS -------------------------------------------------------- */
 Route::resource('/tweets',App\Http\Controllers\TweetController::class)->except('index');
 
+/*------------------------ PUBLICATION ET MODIF DES COMMENTAIRES -------------------------------------------------------- */
+Route::resource('/comments',App\Http\Controllers\CommentController::class)->except('index');
+
 
