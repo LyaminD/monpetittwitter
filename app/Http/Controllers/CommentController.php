@@ -41,13 +41,16 @@ class CommentController extends Controller
             'image' => '',
             'tags' => '',            
         ]);
-        $user = Auth::user();
-         Comment::create([
-            'content' => $request->input('content'),
-            'image' => $request->input('image'),
-            'tags' => $request->input('tags'),   
-            'user_id' => $user->id,               
-        ]);
+        $user_id = Auth::user()->id;
+          $comment = new Comment;
+          $comment->user_id = $user_id;
+          $comment->tweet_id = $request ->input('tweet_id');
+          $comment->content = $request ->input('content');
+          $comment->image = $request ->input('image');
+          $comment->tags = $request ->input('tags');
+          $comment->save();
+
+        ;
         return redirect()->route('home');
     }
 
@@ -101,8 +104,9 @@ class CommentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
-    {
-        //
+    public function destroy(Comment $comment)
+    {   
+        $comment->delete();
+        return redirect()->route('home');
     }
 }

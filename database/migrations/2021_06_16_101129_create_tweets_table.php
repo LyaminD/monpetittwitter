@@ -20,6 +20,7 @@ class CreateTweetsTable extends Migration
             $table->string('image')->nullable();
             $table->string('tags');
             $table->timestamps();
+            $table->engine = 'InnoDB';
 
             $table->foreign('user_id')->references('id')->on('users');
         });

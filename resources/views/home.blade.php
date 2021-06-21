@@ -20,17 +20,6 @@
         </div>
     </div>
 </div>
-<!-- Search widget-->
-<div class="card mb-4 container my-5 justify-content-center">
-    <div class="card-header">Recherche se que tu veux !</div>
-    <div class="card-body">
-        <div class="input-group">
-            <input class="form-control" type="text" placeholder="Enter search term..." aria-label="Enter search term..." aria-describedby="button-search" />
-            <button class="btn btn-primary" id="button-search" type="button">Go!</button>
-        </div>
-    </div>
-</div>
-
 <!-- POSTER UN TWEET-->
 <div class="container mt-5 mb-5">
     <h1>Post ton tweet !</h1>
@@ -49,7 +38,6 @@
                                 <input type="text" name="tags" class="form-control" placeholder="Tags">
                                 <h3>Joindre une image</h3>
                                 <input type="text" name="image" class="form-control" placeholder="Images">
-                                <div class="fonts"> <i class="fa fa-camera "></i> </div>
                                 <button>Envoyer</button>
                             </div>
                         </div>
@@ -105,6 +93,7 @@
                             </div>
                         </div>
 
+
                     </div>
                     <hr class="mt-auto mb-4">
                     <div class="text-center">
@@ -113,6 +102,19 @@
                             <button>Modifier le tweet</button></a>
                         @endif
                     </div>
+
+                    <div class="text-center">
+                        @if (Auth::user()->can('delete', $tweet))
+                        <form action="{{route('tweets.destroy',$tweet)}}" method="POST">
+                            @csrf
+                            @method('delete')
+                            <input type="submit" value="supprimer"> <i class="fas fa-times-circle"></i>
+                        </form>
+                        @endif
+                    </div>
+
+
+
                     @foreach($tweet->comments as $comment)
                     <div class="comments">
                         <div class="d-flex flex-row mb-2"> <img src="/public/images/image1.jpg" width="40" class="rounded-image">
@@ -129,8 +131,11 @@
                             </div>
                             <div class="text-center">
                                 @if (Auth::user()->can('delete', $comment))
-                                <a href="{{route('comments.delete',$comment)}}">
-                                    <button> <i class="fas fa-times-circle"></i></button></a>
+                                <form action="{{route('comments.destroy',$comment)}}" method="POST">
+                                    @csrf
+                                    @method('delete')
+                                    <button> <i class="fas fa-times-circle"></i></button>
+                                </form>
                                 @endif
                             </div>
                         </div>
@@ -145,8 +150,8 @@
                                         <input type="text" name="tags" class="form-control" placeholder="Tags">
                                         <h3>Joindre une image</h3>
                                         <input type="text" name="image" class="form-control" placeholder="Images">
-                                        <div class="fonts"> <i class="fa fa-camera "></i> </div>
-                                        <button>Envoyer</button>
+                                        <input type="hidden" value="{{$tweet->id}}" name="tweet_id">
+                                        <input type="submit" value="envoyer">
                                     </div>
                                 </div>
                             </form>
@@ -156,8 +161,7 @@
                 </div>
             </div>
         </div>
-        @endforeach
-
     </div>
 </div>
+@endforeach
 @endsection
