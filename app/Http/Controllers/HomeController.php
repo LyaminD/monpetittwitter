@@ -24,8 +24,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $tweets=Tweet::all();
-        return view('home',['tweets'=>$tweets]);
+        $tweets = Tweet::all()->sortByDesc('created_at');
+        return view('home', ['tweets' => $tweets]);
     }
-
 }

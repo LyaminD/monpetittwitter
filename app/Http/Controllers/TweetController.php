@@ -16,7 +16,6 @@ class TweetController extends Controller
      */
     public function create()
     {
-     
     }
 
     /**
@@ -28,18 +27,18 @@ class TweetController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'content' => 'required', 'string','min:5','max:255',
+            'content' => 'required', 'string', 'min:5', 'max:255',
             'image' => '',
-            'tags' => '',            
+            'tags' => '',
         ]);
         $user = Auth::user();
-         Tweet::create([
+        Tweet::create([
             'content' => $request->input('content'),
             'image' => $request->input('image'),
-            'tags' => $request->input('tags'),   
-            'user_id' => $user->id,               
+            'tags' => $request->input('tags'),
+            'user_id' => $user->id,
         ]);
-        return redirect()->route('home');
+        return redirect()->route('home')->with('message', 'Tweet poster avec succès');
     }
 
     /**
@@ -60,7 +59,7 @@ class TweetController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function edit(Tweet $tweet)
-    {   
+    {
         return view('tweet.modiftweet', compact('tweet'));
     }
 
@@ -71,19 +70,19 @@ class TweetController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request,Tweet $tweet)
-    {  
+    public function update(Request $request, Tweet $tweet)
+    {
         $request->validate([
-            'content' => 'required', 'string','min:5','max:255',
+            'content' => 'required', 'string', 'min:5', 'max:255',
             'image' => '',
-            'tags' => '',            
+            'tags' => '',
         ]);
-        $tweet->content=$request->input('content');
-        $tweet->tags=$request->input('tags');
-        $tweet->image=$request->input('image');
+        $tweet->content = $request->input('content');
+        $tweet->tags = $request->input('tags');
+        $tweet->image = $request->input('image');
         $tweet->save();
 
-        return redirect()->route('home');
+        return redirect()->route('home')->with('message', 'Tweet modifié avec succès');
     }
 
     /**
@@ -95,7 +94,7 @@ class TweetController extends Controller
     public function destroy(Tweet $tweet)
     {
         $tweet->delete();
-        return redirect()->route('home');
+        return redirect()->route('home')->with('message', 'Tweet supprimer succès');
     }
 
     public function search(Request $request)
@@ -105,14 +104,13 @@ class TweetController extends Controller
         ]);
         $recherche = $request->input('search');
         $tweets = DB::table('tweets')
-                     ->where('tweets.content', 'like', "%$recherche%")
-                     ->orWhere('tweets.tags', 'like', "%$recherche%")
-                     ->join('users', 'tweets.user_id', '=', 'users.id')
-                     ->join('comments', 'tweets.id', '=', 'comments.tweet_id')
-                     ->get();
-                     
-        
+            ->where('tweets.content', 'like', "%$recherche%")
+            ->orWhere('tweets.tags', 'like', "%$recherche%")
+            ->join('users', 'tweets.user_id', '=', 'users.id')
+            ->join('comments', 'tweets.id', '=', 'comments.tweet_id')
+            ->get();
+
+
         return view('search', compact('tweets'));
-        
     }
 }

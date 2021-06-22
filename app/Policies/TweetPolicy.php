@@ -5,18 +5,18 @@ namespace App\Policies;
 use App\Models\Tweet;
 use App\Models\User;
 use Illuminate\Auth\Access\HandlesAuthorization;
+use Illuminate\Support\Facades\Auth;
 
 class TweetPolicy
 {
     use HandlesAuthorization;
 
-    public function before(User $user) {
-        if($user->isAdmin()) {
+    public function before(User $user)
+    {
+        if ($user->isAdmin()) {
             return true;
         }
     }
-
-
 
     /**
      * Determine whether the user can view any models.
@@ -49,7 +49,9 @@ class TweetPolicy
      */
     public function create(User $user)
     {
-        return true;
+        if (Auth::user()){ 
+            return true;
+        }
     }
 
     /**
@@ -71,7 +73,7 @@ class TweetPolicy
      * @param  \App\Models\Post  $post
      * @return mixed
      */
-    public function delete(User $user,Tweet $tweet)
+    public function delete(User $user, Tweet $tweet)
     {
         return  $user->id === $tweet->user_id;
     }

@@ -10,8 +10,9 @@ class CommentPolicy
 {
     use HandlesAuthorization;
 
-    public function before(user $user, $ability) {
-        if($user->isAdmin()) {
+    public function before(user $user)
+    {
+        if ($user->isAdmin()) {
             return true;
         }
     }
@@ -24,7 +25,6 @@ class CommentPolicy
     public function viewAny(User $user)
     {
         return true;
-        //
     }
 
     /**
@@ -37,7 +37,6 @@ class CommentPolicy
     public function view(User $user, Comment $comment)
     {
         return true;
-
     }
 
     /**
@@ -48,7 +47,9 @@ class CommentPolicy
      */
     public function create(User $user)
     {
-        return true;
+        if (Auth::user()){ 
+            return true;
+        }
     }
 
     /**
@@ -72,10 +73,9 @@ class CommentPolicy
      */
     public function delete(User $user, Comment $comment)
     {
-        if($user->id === $comment->user_id || $user->id === $comment->tweet->user_id){
-         return  true;
-        };
-        
+        if ($user->id === $comment->user_id || $user->id === $comment->tweet->user_id) {
+            return  true;
+        }
     }
 
     /**

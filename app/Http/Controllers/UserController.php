@@ -23,7 +23,6 @@ class UserController extends Controller
     {
         $user = Auth::user();
         return view('user.compte', ['user' => $user]);
-
     }
 
     /**
@@ -88,7 +87,7 @@ class UserController extends Controller
     {
         $user = Auth::user();
         $user->update($request->all());
-        return redirect()->route('compte');
+        return redirect()->route('compte')->with('message', 'Informations modifiées !');
     }
 
     /**
@@ -121,7 +120,7 @@ class UserController extends Controller
 
             $utilisateur->password = bcrypt(request('password'));
             $utilisateur->save();
-            return redirect()->route('compte');
+            return redirect()->route('compte')->with('message', 'Mot de passe modifié !');
         }
     }
 }

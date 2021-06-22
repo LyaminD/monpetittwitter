@@ -20,6 +20,11 @@
         </div>
     </div>
 </div>
+
+<div class="tribunal text-center my-5">
+    <img src="{{ asset("images/tribunal.jpg") }}">
+</div>
+
 <!-- POSTER UN TWEET-->
 <div class="container mt-5 mb-5 text-center">
     <h1>Post ton tweet !</h1>
@@ -61,7 +66,7 @@
                             <div class="col">
                                 <div class="d-flex flex-lg-row flex-column-reverse no-gutters justify-content-center">
                                     <div class="col-3 text-right"><img class="img-fluid" id="quotes" src="https://img.icons8.com/ultraviolet/40/000000/quote-left.png" width="110" height="110"></div>
-                                    <div class="col pr-lg-5"><img class=" img-1 mr-lg-5 " src="https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=80" alt="..." width="130" class="rounded mb-2 img-thumbnail"></div>
+                                    <div class="col pr-lg-5"><img class=" img-1 mr-lg-5 " src="images/{{ $tweet->user->image }}" width="130" class="rounded mb-2 img-thumbnail"></div>
                                 </div>
                             </div>
                         </div>
@@ -83,7 +88,7 @@
                     </div>
                     <div class="row justify-content-center">
                         <div class="col text-center justify-content-center ">
-                            <p class="bold text-center px-md-3"><img src="https://images.unsplash.com/photo-1469594292607-7bd90f8d3ba4?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80" alt="" class="img-fluid rounded shadow-sm">{{ $tweet->image}}</p>
+                            <p class="bold text-center px-md-3"><img src="{{ asset("images/$tweet->image") }}" class="img-fluid rounded shadow-sm"></p>
                         </div>
                     </div>
                     <div class="card-body text-center pb-3 ">
@@ -114,9 +119,9 @@
 
                     @foreach($tweet->comments as $comment)
                     <div class="comments ">
-                        <div class="d-flex flex-row mb-2"> <img src="https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=80" width="40" class="rounded-image">
+                        <div class="d-flex flex-row mb-2"> <img src="images/{{ $comment->user->image }}" width="40" class="rounded-image">
                             <div class="d-flex flex-column ml-2">
-                                <span class="name">{{ $comment->user->tweetname}}</span>
+                                <span class="name"><a href="{{route('profil',$user_id)}}">{{ $comment->user->tweetname}}</a></span>
                                 <small class="comment-text">{{ $comment->content}}</small>
                                 <small class="comment-text">{{ $comment->tags}}</small>
                             </div>

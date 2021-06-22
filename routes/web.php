@@ -21,23 +21,22 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::get('/compte',[App\Http\Controllers\UserController::class, 'index'])->name('compte');
+Route::get('/compte', [App\Http\Controllers\UserController::class, 'index'])->name('compte');
 
 /*------------------------ MODIFICATION DES INFOS DU COMPTE  ---------------------------- */
-Route::get('/editaccount',[App\Http\Controllers\UserController::class, 'edit'])->name('editaccount');
-Route::post('/editaccount',[App\Http\Controllers\UserController::class, 'update'])->name('updateaccount');
+Route::get('/editaccount', [App\Http\Controllers\UserController::class, 'edit'])->name('editaccount');
+Route::post('/editaccount', [App\Http\Controllers\UserController::class, 'update'])->name('updateaccount');
 
 /*------------------------ MODIFICATION DU MOT DE PASSE------------------------------------- */
-Route::get('/editpassword',[App\Http\Controllers\UserController::class, 'editpassword'])->name('editpassword');
-Route::post('/editpassword',[App\Http\Controllers\UserController::class, 'updatepassword'])->name('updatepassword');
-
+Route::get('/editpassword', [App\Http\Controllers\UserController::class, 'editpassword'])->name('editpassword');
+Route::post('/editpassword', [App\Http\Controllers\UserController::class, 'updatepassword'])->name('updatepassword');
 
 /*------------------------ PUBLICATION ET MODIF DES TWEETS -------------------------------------------------------- */
-Route::resource('/tweets',App\Http\Controllers\TweetController::class)->except('index');
+Route::resource('/tweets', App\Http\Controllers\TweetController::class)->except('index');
+Route::resource('/tweets', App\Http\Controllers\ProfilController::class)->except('index');
 
 /*------------------------ PUBLICATION ET MODIF DES COMMENTAIRES -------------------------------------------------------- */
-Route::resource('/comments',App\Http\Controllers\CommentController::class)->except('index');
-
+Route::resource('/comments', App\Http\Controllers\CommentController::class)->except('index');
 
 /*------------------------ PUBLICATION DE LA RECHERCHE -------------------------------------------------------- */
-Route::get('/search',[App\Http\Controllers\TweetController::class, 'search'])->name('search');
+Route::get('/search', [App\Http\Controllers\TweetController::class, 'search'])->name('search');

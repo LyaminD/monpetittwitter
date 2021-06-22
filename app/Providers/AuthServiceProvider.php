@@ -14,7 +14,8 @@ class AuthServiceProvider extends ServiceProvider
      */
     protected $policies = [
        // 'App\Models\Model' => 'App\Policies\ModelPolicy',
-        Tweet::class => TweetPolicy::class
+        Tweet::class => TweetPolicy::class,
+        Comment::class => CommentPolicy::class
     ];
 
     /**

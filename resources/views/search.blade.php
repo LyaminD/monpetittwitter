@@ -46,8 +46,6 @@
                                 <p class="bold text-center px-md-3">tags : {{ $tweet->tags}}</p>
                             </div>
                         </div>
-
-
                     </div>
                     <hr class="mt-auto mb-4">
                     <div class="text-center">
@@ -66,11 +64,11 @@
                         </form>
                         @endif
                     </div>
-                    </div>
                 </div>
             </div>
         </div>
     </div>
+</div>
 </div>
 @endforeach
 @endsection
