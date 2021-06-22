@@ -10,7 +10,7 @@ class TweetPolicy
 {
     use HandlesAuthorization;
 
-    public function before(user $user, $ability) {
+    public function before(User $user) {
         if($user->isAdmin()) {
             return true;
         }

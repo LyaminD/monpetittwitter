@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Tweet;
 use Auth;
+use Illuminate\Support\Facades\DB;
 
 class TweetController extends Controller
 {
@@ -95,5 +96,23 @@ class TweetController extends Controller
     {
         $tweet->delete();
         return redirect()->route('home');
+    }
+
+    public function search(Request $request)
+    {
+        $request->validate([
+            'search' => 'required', 'string', 'max:20'
+        ]);
+        $recherche = $request->input('search');
+        $tweets = DB::table('tweets')
+                     ->where('tweets.content', 'like', "%$recherche%")
+                     ->orWhere('tweets.tags', 'like', "%$recherche%")
+                     ->join('users', 'tweets.user_id', '=', 'users.id')
+                     ->join('comments', 'tweets.id', '=', 'comments.tweet_id')
+                     ->get();
+                     
+        
+        return view('search', compact('tweets'));
+        
     }
 }

@@ -21,7 +21,7 @@
     </div>
 </div>
 <!-- POSTER UN TWEET-->
-<div class="container mt-5 mb-5">
+<div class="container mt-5 mb-5 text-center">
     <h1>Post ton tweet !</h1>
     <div class="row d-flex align-items-center justify-content-center">
         <div class="col-md-6">
@@ -37,7 +37,7 @@
                                 <h3>Tags</h3>
                                 <input type="text" name="tags" class="form-control" placeholder="Tags">
                                 <h3>Joindre une image</h3>
-                                <input type="text" name="image" class="form-control" placeholder="Images">
+                                <input type="text" name="image" class="form-control my-2" placeholder="Images">
                                 <button>Envoyer</button>
                             </div>
                         </div>
@@ -47,7 +47,7 @@
         </div>
     </div>
 </div>
-<h1>Fil d'actualité</h1>
+<h1 class="text-center">Fil d'actualité</h1>
 <!-- TWEET-->
 @foreach ($tweets as $tweet)
 <div class="container my-5 justify-content-center">
@@ -93,7 +93,6 @@
                             </div>
                         </div>
 
-
                     </div>
                     <hr class="mt-auto mb-4">
                     <div class="text-center">
@@ -108,16 +107,14 @@
                         <form action="{{route('tweets.destroy',$tweet)}}" method="POST">
                             @csrf
                             @method('delete')
-                            <input type="submit" value="supprimer"> <i class="fas fa-times-circle"></i>
+                            <input type="submit" value="supprimer" class="my-2">
                         </form>
                         @endif
                     </div>
 
-
-
                     @foreach($tweet->comments as $comment)
-                    <div class="comments">
-                        <div class="d-flex flex-row mb-2"> <img src="/public/images/image1.jpg" width="40" class="rounded-image">
+                    <div class="comments ">
+                        <div class="d-flex flex-row mb-2"> <img src="https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=80" width="40" class="rounded-image">
                             <div class="d-flex flex-column ml-2">
                                 <span class="name">{{ $comment->user->tweetname}}</span>
                                 <small class="comment-text">{{ $comment->content}}</small>
@@ -126,7 +123,7 @@
                             <div class="text-center">
                                 @if (Auth::user()->can('update', $comment))
                                 <a href="{{route('comments.edit',$comment)}}">
-                                    <button><i class="fa-solid fa-pencil"></i></button></a>
+                                    <button><i class="fas fa-pencil-alt"></i></button></a>
                                 @endif
                             </div>
                             <div class="text-center">
@@ -143,7 +140,7 @@
                         <div class="p-2">
                             <form action="{{route('comments.store')}}" method="post">
                                 @csrf
-                                <div class="comments">
+                                <div class="comments  text-center my-2">
                                     <h3>Commente !</h3>
                                     <div class="comment-input"> <input type="text" name="content" class="form-control" placeholder="Comment">
                                         <h3>Tags</h3>
@@ -151,7 +148,7 @@
                                         <h3>Joindre une image</h3>
                                         <input type="text" name="image" class="form-control" placeholder="Images">
                                         <input type="hidden" value="{{$tweet->id}}" name="tweet_id">
-                                        <input type="submit" value="envoyer">
+                                        <input type="submit" value="envoyer" class="my-2">
                                     </div>
                                 </div>
                             </form>

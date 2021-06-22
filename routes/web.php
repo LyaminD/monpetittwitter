@@ -39,3 +39,5 @@ Route::resource('/tweets',App\Http\Controllers\TweetController::class)->except('
 Route::resource('/comments',App\Http\Controllers\CommentController::class)->except('index');
 
 
+/*------------------------ PUBLICATION DE LA RECHERCHE -------------------------------------------------------- */
+Route::get('/search',[App\Http\Controllers\TweetController::class, 'search'])->name('search');
