@@ -75,7 +75,6 @@
                         <div class="row text-center name mt-auto ">
                             <div class="col">
                                 <h4 class="mb-0">{{ $tweet->user->tweetname}}</h4>
-                                <p><span class="fa fa-star text-warning mr-1"></span><span class="fa fa-star text-warning mr-1"></span><span class="fa fa-star text-warning mr-1"></span><span class="fa fa-star-half-o text-warning mr-1"></span><span class="fa fa-star-o text-warning mr-1"></span></p>
                             </div>
                         </div>
                     </div>
@@ -121,7 +120,7 @@
                     <div class="comments ">
                         <div class="d-flex flex-row mb-2"> <img src="images/{{ $comment->user->image }}" width="40" class="rounded-image">
                             <div class="d-flex flex-column ml-2">
-                                <span class="name"><a href="{{route('profil',$user_id)}}">{{ $comment->user->tweetname}}</a></span>
+                                <span class="name"><a href="{{route('profil',$comment->user_id)}}">{{ $comment->user->tweetname}}</a></span>
                                 <small class="comment-text">{{ $comment->content}}</small>
                                 <small class="comment-text">{{ $comment->tags}}</small>
                             </div>

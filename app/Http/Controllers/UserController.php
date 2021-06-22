@@ -46,6 +46,12 @@ class UserController extends Controller
         //
     }
 
+    public function profil(User $user)
+    {
+        $user->load('tweets');
+        return view('user.profil', compact('user'));
+    }
+
     /**
      * Display the specified resource.
      *

@@ -63,6 +63,9 @@
                                 <a href="{{ route('compte') }}">
                                     Mon compte
                                 </a></br>
+                                <a href="{{ route('profil',$user=Auth::user()->id)}}">
+                                    Profil
+                                </a></br>
                                 <a href="{{ route('editaccount') }}">
                                     Modifier mes informations
                                 </a></br>
