@@ -59,17 +59,17 @@
                                 {{ Auth::user()->tweetname }}
                             </a>
 
-                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                <a href="{{ route('compte') }}">
+                            <div class="dropdown-menu dropdown-menu-right px-5 justify-content-center" aria-labelledby="navbarDropdown">
+                                <a href="{{ route('compte') }}" class="mx-3 text-reset">
                                     Mon compte
                                 </a></br>
-                                <a href="{{ route('profil',$user=Auth::user()->id)}}">
+                                <a href="{{ route('profil',$user=Auth::user()->id)}}" class="mx-3 text-reset">
                                     Profil
                                 </a></br>
-                                <a href="{{ route('editaccount') }}">
+                                <a href="{{ route('editaccount') }}" class="mx-3 text-reset">
                                     Modifier mes informations
                                 </a></br>
-                                <a href="{{ route('editpassword') }}">
+                                <a href="{{ route('editpassword') }}" class="mx-3 text-reset">
                                     Modifier le mot de passe
                                 </a>
                                 <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
@@ -90,7 +90,7 @@
                     <form method="get" action="{{ route('search') }}">
                         <div class="d-flex justify-content-center">
                             <div class="input-group">
-                                <input class="form-control" type="search" placeholder="Enter search term..." aria-label="Enter search term..." aria-describedby="button-search" name="search" />
+                                <input class="form-control" type="search" placeholder="Entrez la recherche" aria-label="Enter search term..." aria-describedby="button-search" name="search" />
                                 <button class="btn btn-primary" type="submit" id="button-search" type="button">Go!</button>
                             </div>
                         </div>
@@ -98,7 +98,7 @@
                 </div>
             </div>
         </nav>
-        <main class="py-4">
+        <main class="py-4 p-5">
             <div class="container-fluid text-center">
                 @if(session()->has('message'))
                 <p class="alert alert-success">{{ session()->get('message') }}</p>
@@ -117,19 +117,19 @@
             @yield('content')
         </main>
     </div>
-        <footer class="bg-light text-center text-lg-start">
-  <!-- Copyright -->
-  <div class="text-center p-3" style="background-color: white;">
-    <h6 class="text-dark">© 2021 Copyright: MonPetitTwitter By DIAFAT Lyamin</h6>
-     <ul>
-                        <li class="text-primary d-inline mx-1"><i class="fab fa-facebook-square fa-3x"></i></li>
-                        <li class="text-primary d-inline mx-1"><i class="fab fa-twitter-square fa-3x"></i></li>
-                        <li class="text-warning d-inline mx-1"><i class="fab fa-github fa-3x"></i></li>
-                        <li class="text-danger d-inline mx-1"><i class="fab fa-youtube fa-3x"></i></li>
-                    </ul>
-  </div>
-  <!-- Copyright -->
-</footer>
+    <footer class="bg-light text-center text-lg-start">
+        <!-- Copyright -->
+        <div class="text-center p-3" style="background-color: white;">
+            <h6 class="text-dark">© 2021 Copyright: MonPetitTwitter By DIAFAT Lyamin</h6>
+            <ul>
+                <li class="text-primary d-inline mx-1"><i class="fab fa-facebook-square fa-3x"></i></li>
+                <li class="text-primary d-inline mx-1"><i class="fab fa-twitter-square fa-3x"></i></li>
+                <li class="text-warning d-inline mx-1"><i class="fab fa-github fa-3x"></i></li>
+                <li class="text-danger d-inline mx-1"><i class="fab fa-youtube fa-3x"></i></li>
+            </ul>
+        </div>
+        <!-- Copyright -->
+    </footer>
     </footer>
 </body>
 

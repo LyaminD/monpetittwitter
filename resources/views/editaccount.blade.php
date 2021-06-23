@@ -70,33 +70,33 @@
                         </div>
                         <label for="image" class="col-md-4 col-form-label text-md-right">{{ __('Image') }}</label>
                         <div class="col-md-6">
-                    @if(Session::get('image'))
-                    <input type="text" class="form-control" name="image" id="image" value="{{Session::get('image')}}">
-                    @else
-                    <input type="text" name="image" id="image" class="form-control my-2" placeholder="Upload d'images ci-dessous">
-                    @endif 
-                    <button class="button is-link btn-success" type="submit">Envoyer</button>
+                            @if(Session::get('image'))
+                            <input type="text" class="form-control" name="image" id="image" value="{{Session::get('image')}}">
+                            @else
+                            <input type="text" name="image" id="image" class="form-control my-2" placeholder="Upload d'images ci-dessous">
+                            @endif
+                            <button class="button is-link btn-success" type="submit">Envoyer</button>
                     </form>
                     <div class="form-group row">
-                    
-                   
-                    <form action="{{ route('image.upload.post') }}" method="POST" enctype="multipart/form-data">
-                        @csrf
-                        <div class="row">
-                            <div class="col-md-6 my-2">
-                                <input type="file" name="image" class="form-control">
+
+
+                        <form action="{{ route('image.upload.post') }}" method="POST" enctype="multipart/form-data">
+                            @csrf
+                            <div class="row">
+                                <div class="col-md-6 my-2">
+                                    <input type="file" name="image" class="form-control">
+                                </div>
+                                <div class="col-md-6 my-2">
+                                    <button type="submit" class="btn btn-success">Upload</button>
+                                </div>
                             </div>
-                            <div class="col-md-6 my-2">
-                                <button type="submit" class="btn btn-success">Upload</button>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-            </div>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
+</div>
 </div>
 </div>
 </div>
