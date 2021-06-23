@@ -42,8 +42,23 @@
                                 <h3>Tags</h3>
                                 <input type="text" name="tags" class="form-control" placeholder="Tags">
                                 <h3>Joindre une image</h3>
-                                <input type="text" name="image" class="form-control my-2" placeholder="Images">
+                                @if(Session::get('image'))
+                                <input type="text" class="form-control" name="image" id="image" value="{{Session::get('image')}}">
+                                @else
+                                <input type="text" name="image" id="image" class="form-control my-2" placeholder="Upload d'images ci-dessous">
+                                @endif
                                 <button>Envoyer</button>
+                            </div>
+                        </div>
+                    </form>
+                    <form action="{{ route('image.upload.post') }}" method="POST" enctype="multipart/form-data">
+                        @csrf
+                        <div class="row">
+                            <div class="col-md-6 my-2">
+                                <input type="file" name="image" class="form-control">
+                            </div>
+                            <div class="col-md-6 my-2">
+                                <button type="submit" class="btn btn-success">Upload</button>
                             </div>
                         </div>
                     </form>
@@ -150,9 +165,24 @@
                                         <h3>Tags</h3>
                                         <input type="text" name="tags" class="form-control" placeholder="Tags">
                                         <h3>Joindre une image</h3>
-                                        <input type="text" name="image" class="form-control" placeholder="Images">
+                                        @if(Session::get('image'))
+                                        <input type="text" class="form-control" name="image" id="image" value="{{Session::get('image')}}">
+                                        @else
+                                        <input type="text" name="image" id="image" class="form-control my-2" placeholder="Upload d'images ci-dessous">
+                                        @endif
                                         <input type="hidden" value="{{$tweet->id}}" name="tweet_id">
                                         <input type="submit" value="envoyer" class="my-2">
+                                    </div>
+                                </div>
+                            </form>
+                            <form action="{{ route('image.upload.post') }}" method="POST" enctype="multipart/form-data">
+                                @csrf
+                                <div class="row">
+                                    <div class="col-md-6 my-2">
+                                        <input type="file" name="image" class="form-control">
+                                    </div>
+                                    <div class="col-md-6 my-2">
+                                        <button type="submit" class="btn btn-success">Upload</button>
                                     </div>
                                 </div>
                             </form>

@@ -89,10 +89,25 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request)
+    public function update(Request $request, User $user)
     {
+        $request->validate( [
+            'nom' => ['required', 'string', 'max:255'],
+            'prenom' => ['required', 'string', 'max:255'],
+            'tweetname' => ['required', 'string', 'max:255', 'unique:users'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'image' => ['nullable'],
+            'confirmed']
+            );
         $user = Auth::user();
-        $user->update($request->all());
+            $user->nom = $request->input('nom');
+            $user->prenom = $request->input('prenom');
+            $user->tweetname = $request->input('tweetname');
+            $user->email = $request->input('email');
+            $user->image = $request->input('image');
+            $user->save();
+
+       
         return redirect()->route('compte')->with('message', 'Informations modifiées !');
     }
 

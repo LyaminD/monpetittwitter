@@ -10012,6 +10012,10 @@ body {
   color: #fff;
 }
 
+h1 {
+  text-align: center;
+}
+
 .container-fluid, .container-sm, .container-md, .container-lg, .container-xl {
   margin-top: 200px !important;
 }
@@ -10141,6 +10145,10 @@ hr {
   background-image: url(/public/images/image1.jpg);
   background-size: cover;
   background-repeat: no-repeat;
+}
+
+h1 {
+  text-align: center;
 }
 
 .form-control:focus {

@@ -40,3 +40,6 @@ Route::resource('/comments', App\Http\Controllers\CommentController::class)->exc
 
 /*------------------------ PUBLICATION DE LA RECHERCHE -------------------------------------------------------- */
 Route::get('/search', [App\Http\Controllers\TweetController::class, 'search'])->name('search');
+
+/*--------------------------------------- UPLOAD IMAGES ---------------------------------------------- */
+Route::post('image-upload', [App\Http\Controllers\ImageUploadController::class, 'imageUploadPost' ])->name('image.upload.post');

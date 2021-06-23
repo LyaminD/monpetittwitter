@@ -68,19 +68,37 @@
                                 @enderror
                             </div>
                         </div>
-
-                        <div class="form-group row mb-0">
-                            <div class="col-md-6 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
-                                    {{ __('Valider') }}
-                                </button>
+                        <label for="image" class="col-md-4 col-form-label text-md-right">{{ __('Image') }}</label>
+                        <div class="col-md-6">
+                    @if(Session::get('image'))
+                    <input type="text" class="form-control" name="image" id="image" value="{{Session::get('image')}}">
+                    @else
+                    <input type="text" name="image" id="image" class="form-control my-2" placeholder="Upload d'images ci-dessous">
+                    @endif 
+                    <button class="button is-link" type="submit">Envoyer</button>
+                    </form>
+                    <div class="form-group row">
+                    
+                   
+                    <form action="{{ route('image.upload.post') }}" method="POST" enctype="multipart/form-data">
+                        @csrf
+                        <div class="row">
+                            <div class="col-md-6 my-2">
+                                <input type="file" name="image" class="form-control">
+                            </div>
+                            <div class="col-md-6 my-2">
+                                <button type="submit" class="btn btn-success">Upload</button>
                             </div>
                         </div>
                     </form>
                 </div>
             </div>
+                </div>
+            </div>
         </div>
     </div>
+</div>
+</div>
 </div>
 
 @endsection
