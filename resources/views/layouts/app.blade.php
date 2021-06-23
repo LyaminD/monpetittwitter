@@ -28,7 +28,7 @@
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm d-flex justify-content-between">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
-                    {{ config('app.name', 'monpetittwitter') }}
+                    <img src="{{ asset("images/MonPetitTwitter.png") }}" class="logo" alt="logo">
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
@@ -88,7 +88,7 @@
                 <!-- Search widget-->
                 <div class=" ms-4 container my-2 d-flex justify-content-end">
                     <form method="get" action="{{ route('search') }}">
-                        <div class="d-flex justify-content-center" >
+                        <div class="d-flex justify-content-center">
                             <div class="input-group">
                                 <input class="form-control" type="search" placeholder="Enter search term..." aria-label="Enter search term..." aria-describedby="button-search" name="search" />
                                 <button class="btn btn-primary" type="submit" id="button-search" type="button">Go!</button>
@@ -99,23 +99,38 @@
             </div>
         </nav>
         <main class="py-4">
-        <div class="container-fluid text-center">
-        @if(session()->has('message'))
-        <p class="alert alert-success">{{ session()->get('message') }}</p>
-        @endif
+            <div class="container-fluid text-center">
+                @if(session()->has('message'))
+                <p class="alert alert-success">{{ session()->get('message') }}</p>
+                @endif
 
-        @if ($errors->any())
-        <div class="alert alert-danger">
-            <ul>
-                @foreach ($errors->all() as $error)
-                <li>{{ $error }}</li>
-                @endforeach
-            </ul>
-        </div>
-        @endif
-    </div>
+                @if ($errors->any())
+                <div class="alert alert-danger">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+                @endif
+            </div>
             @yield('content')
         </main>
     </div>
+        <footer class="bg-light text-center text-lg-start">
+  <!-- Copyright -->
+  <div class="text-center p-3" style="background-color: white;">
+    <h6 class="text-dark">© 2021 Copyright: MonPetitTwitter By DIAFAT Lyamin</h6>
+     <ul>
+                        <li class="text-primary d-inline mx-1"><i class="fab fa-facebook-square fa-3x"></i></li>
+                        <li class="text-primary d-inline mx-1"><i class="fab fa-twitter-square fa-3x"></i></li>
+                        <li class="text-warning d-inline mx-1"><i class="fab fa-github fa-3x"></i></li>
+                        <li class="text-danger d-inline mx-1"><i class="fab fa-youtube fa-3x"></i></li>
+                    </ul>
+  </div>
+  <!-- Copyright -->
+</footer>
+    </footer>
 </body>
+
 </html>

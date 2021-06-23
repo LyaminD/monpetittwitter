@@ -75,7 +75,7 @@
                     @else
                     <input type="text" name="image" id="image" class="form-control my-2" placeholder="Upload d'images ci-dessous">
                     @endif 
-                    <button class="button is-link" type="submit">Envoyer</button>
+                    <button class="button is-link btn-success" type="submit">Envoyer</button>
                     </form>
                     <div class="form-group row">
                     

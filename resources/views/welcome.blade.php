@@ -17,22 +17,20 @@
 <body>
     <div id="loginBackground">
 
-
         <h1>Bienvenu sur Monpetittwitter ! ! !</h1>
-            <div class="container">
+        <div class="container">
             <div class="tribunal text-center my-3">
-                <img src="{{ asset("images/tribunal.jpg") }}">
+                <img src="{{ asset("images/MonPetitTwitter.png") }}" class="img-thumbnail">
             </div>
         </div>
-
         <div class="container d-flex text-center">
             <div class="col text-center">
-            <div class="button-div">
-                <a href="{{ route('register') }}" class="btn btn-primary" role="button" data-bs-toggle="button">S'enregistrer</a>
-                <a href="{{ route('login') }}" class="btn btn-primary" role="button" data-bs-toggle="button">Se connecter</a>
+                <div class="button-div">
+                    <a href="{{ route('register') }}" class="btn btn-primary" role="button" data-bs-toggle="button">S'enregistrer</a>
+                    <a href="{{ route('login') }}" class="btn btn-primary" role="button" data-bs-toggle="button">Se connecter</a>
+                </div>
             </div>
         </div>
-    </div>
     </div>
 </body>
 

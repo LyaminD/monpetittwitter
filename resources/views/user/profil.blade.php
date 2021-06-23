@@ -93,7 +93,7 @@
                     <div class="text-center">
                         @if (Auth::user()->can('update', $tweet))
                         <a href="{{route('tweets.edit',$tweet)}}">
-                            <button>Modifier le tweet</button></a>
+                            <button class="btn-primary">Modifier le tweet</button></a>
                         @endif
                     </div>
 
@@ -102,7 +102,7 @@
                         <form action="{{route('tweets.destroy',$tweet)}}" method="POST">
                             @csrf
                             @method('delete')
-                            <input type="submit" value="supprimer" class="my-2">
+                            <input type="submit" value="supprimer" class="my-2 btn-danger">
                         </form>
                         @endif
                     </div>
@@ -125,7 +125,7 @@
                             <form action="{{route('comments.destroy',$comment)}}" method="POST">
                                 @csrf
                                 @method('delete')
-                                <button> <i class="fas fa-times-circle"></i></button>
+                                <button class="text-danger"> <i class="fas fa-times-circle"></i></button>
                             </form>
                             @endif
                         </div>
@@ -142,7 +142,7 @@
                                     <h3>Joindre une image</h3>
                                     <input type="text" name="image" class="form-control" placeholder="Images">
                                     <input type="hidden" value="{{$tweet->id}}" name="tweet_id">
-                                    <input type="submit" value="envoyer" class="my-2">
+                                    <input type="submit" value="envoyer" class="my-2 btn-success">
                                 </div>
                             </div>
                         </form>

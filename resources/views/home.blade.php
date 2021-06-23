@@ -47,7 +47,7 @@
                                 @else
                                 <input type="text" name="image" id="image" class="form-control my-2" placeholder="Upload d'images ci-dessous">
                                 @endif
-                                <button>Envoyer</button>
+                                <button class="btn-success">Envoyer</button>
                             </div>
                         </div>
                     </form>
@@ -117,7 +117,7 @@
                     <div class="text-center">
                         @if (Auth::user()->can('update', $tweet))
                         <a href="{{route('tweets.edit',$tweet)}}">
-                            <button>Modifier le tweet</button></a>
+                            <button class="btn-primary">Modifier le tweet</button></a>
                         @endif
                     </div>
 
@@ -126,7 +126,7 @@
                         <form action="{{route('tweets.destroy',$tweet)}}" method="POST">
                             @csrf
                             @method('delete')
-                            <input type="submit" value="supprimer" class="my-2">
+                            <input type="submit" value="supprimer" class="my-2 btn-danger">
                         </form>
                         @endif
                     </div>
@@ -150,7 +150,7 @@
                                 <form action="{{route('comments.destroy',$comment)}}" method="POST">
                                     @csrf
                                     @method('delete')
-                                    <button> <i class="fas fa-times-circle"></i></button>
+                                    <button> <i class="fas fa-times-circle text-danger"></i></button>
                                 </form>
                                 @endif
                             </div>
@@ -171,7 +171,7 @@
                                         <input type="text" name="image" id="image" class="form-control my-2" placeholder="Upload d'images ci-dessous">
                                         @endif
                                         <input type="hidden" value="{{$tweet->id}}" name="tweet_id">
-                                        <input type="submit" value="envoyer" class="my-2">
+                                        <input type="submit" value="envoyer" class="my-2 btn-success">
                                     </div>
                                 </div>
                             </form>

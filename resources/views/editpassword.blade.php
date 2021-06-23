@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container col-md-2 text-center border">
+<div class="container col-md-2 text-center border text-dark">
     <h2 class="border-bottom">Modifiez votre mot de passe !</h2>
     <form class="section" action="{{ route('updatepassword') }}" method="post">
         {{ csrf_field() }}
@@ -28,7 +28,7 @@
 
         <div class="col my-5">
             <div class="control">
-                <button class="button is-link" type="submit">Modifier mon mot de passe</button>
+                <button class="button is-link btn-success" type="submit">Modifier mon mot de passe</button>
             </div>
         </div>
     </form>
