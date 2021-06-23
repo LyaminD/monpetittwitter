@@ -118,7 +118,6 @@
         </main>
     </div>
     <footer class="bg-light text-center text-lg-start">
-        <!-- Copyright -->
         <div class="text-center p-3" style="background-color: white;">
             <h6 class="text-dark">© 2021 Copyright: MonPetitTwitter By DIAFAT Lyamin</h6>
             <ul>
@@ -128,7 +127,6 @@
                 <li class="text-danger d-inline mx-1"><i class="fab fa-youtube fa-3x"></i></li>
             </ul>
         </div>
-        <!-- Copyright -->
     </footer>
     </footer>
 </body>

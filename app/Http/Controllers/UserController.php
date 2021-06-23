@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 
 use Auth;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Validator;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules\Password;
@@ -94,11 +93,10 @@ class UserController extends Controller
         $request->validate( [
             'nom' => ['required', 'string', 'max:255'],
             'prenom' => ['required', 'string', 'max:255'],
-            'tweetname' => ['required', 'string', 'max:255', 'unique:users'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'image' => ['nullable'],
-            'confirmed']
-            );
+            'tweetname' => ['required', 'string', 'max:255'],
+            'email' => ['required', 'string', 'email', 'max:255'],
+            ]);
+
         $user = Auth::user();
             $user->nom = $request->input('nom');
             $user->prenom = $request->input('prenom');
@@ -136,10 +134,10 @@ class UserController extends Controller
 
         if (Hash::check($newpassword, $oldpassword)) {
             $newpassword = $oldpassword;
-            return redirect()->route('editpassword');
+            return redirect()->route('editpassword')->withErrors(['password_error','ancien et nouveau mot de passe identique !']);
         } else {
 
-            $utilisateur->password = bcrypt(request('password'));
+            $utilisateur->password = Hash::make(request('password'));
             $utilisateur->save();
             return redirect()->route('compte')->with('message', 'Mot de passe modifié !');
         }

@@ -15,7 +15,7 @@
                             <div class="col">
                                 <div class="d-flex flex-lg-row flex-column-reverse no-gutters justify-content-center">
                                     <div class="col-3 text-right"><img class="img-fluid" id="quotes" src="https://img.icons8.com/ultraviolet/40/000000/quote-left.png" width="110" height="110"></div>
-                                    <div class="col pr-lg-5"><img class=" img-1 mr-lg-5 " src="https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=80" alt="..." width="130" class="rounded mb-2 img-thumbnail"></div>
+                                    <div class="col pr-lg-5"><img class=" img-1 mr-lg-5 " src="images/{{ $tweet->user->image }}" alt="..." width="130" class="rounded mb-2 img-thumbnail"></div>
                                 </div>
                             </div>
                         </div>

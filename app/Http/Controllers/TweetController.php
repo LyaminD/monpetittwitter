@@ -28,16 +28,17 @@ class TweetController extends Controller
     {
         $request->validate([
             'content' => 'required', 'string', 'min:5', 'max:255',
-            'image' => '',
-            'tags' => '',
         ]);
+
         $user = Auth::user();
+
         Tweet::create([
             'content' => $request->input('content'),
             'image' => $request->input('image'),
             'tags' => $request->input('tags'),
             'user_id' => $user->id,
         ]);
+
         return redirect()->route('home')->with('message', 'Tweet poster avec succès');
     }
 
@@ -74,9 +75,8 @@ class TweetController extends Controller
     {
         $request->validate([
             'content' => 'required', 'string', 'min:5', 'max:255',
-            'image' => '',
-            'tags' => '',
         ]);
+
         $tweet->content = $request->input('content');
         $tweet->tags = $request->input('tags');
         $tweet->image = $request->input('image');
@@ -94,7 +94,7 @@ class TweetController extends Controller
     public function destroy(Tweet $tweet)
     {
         $tweet->delete();
-        return redirect()->route('home')->with('message', 'Tweet supprimer succès');
+        return redirect()->route('home')->with('message', 'Tweet supprimer avec succès');
     }
 
     public function search(Request $request)
