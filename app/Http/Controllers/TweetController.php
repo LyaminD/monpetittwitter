@@ -102,12 +102,15 @@ class TweetController extends Controller
         $request->validate([
             'search' => 'required', 'string', 'max:20'
         ]);
+
         $recherche = $request->input('search');
+
         $tweets = DB::table('tweets')
             ->where('tweets.content', 'like', "%$recherche%")
             ->orWhere('tweets.tags', 'like', "%$recherche%")
             ->join('users', 'tweets.user_id', '=', 'users.id')
-            ->join('comments', 'tweets.id', '=', 'comments.tweet_id')
+            ->select('tweets.*','users.imageprofil', 'users.tweetname')
+          //  ->join('comments', 'tweets.id', '=', 'comments.tweet_id')
             ->get();
 
 

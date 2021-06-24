@@ -56,7 +56,7 @@
                             <div class="col">
                                 <div class="d-flex flex-lg-row flex-column-reverse no-gutters justify-content-center">
                                     <div class="col-3 text-right"><img class="img-fluid" id="quotes" src="https://img.icons8.com/ultraviolet/40/000000/quote-left.png" width="110" height="110"></div>
-                                    <div class="col pr-lg-5"><img class=" img-1 mr-lg-5 " src="{{ asset("images/$user->image") }}" width="130" class="rounded mb-2 img-thumbnail"></div>
+                                    <div class="col pr-lg-5"><img class=" img-1 mr-lg-5 " src="{{ asset("images/$user->imageprofil") }}" width="130" class="rounded mb-2 img-thumbnail"></div>
                                 </div>
                             </div>
                         </div>
@@ -78,7 +78,7 @@
                     </div>
                     <div class="row justify-content-center">
                         <div class="col text-center justify-content-center ">
-                            <p class="bold text-center px-md-3"><img src="{{ asset("images/$tweet->image") }}" class="img-fluid rounded shadow-sm"></p>
+                            <p class="bold text-center px-md-3"><img src="{{ asset("images/$tweet->imageprofil") }}" class="img-fluid rounded shadow-sm"></p>
                         </div>
                     </div>
                     <div class="card-body text-center pb-3 ">

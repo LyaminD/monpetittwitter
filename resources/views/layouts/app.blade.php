@@ -90,8 +90,8 @@
                     <form method="get" action="{{ route('search') }}">
                         <div class="d-flex justify-content-center">
                             <div class="input-group">
-                                <input class="form-control" type="search" placeholder="Entrez la recherche" aria-label="Enter search term..." aria-describedby="button-search" name="search" />
-                                <button class="btn btn-primary" type="submit" id="button-search" type="button">Go!</button>
+                                <input class="form-control" type="search" placeholder="Entrez la recherche" aria-describedby="button-search" name="search" />
+                                <button class="btn btn-primary" type="submit" id="button-search">Go!</button>
                             </div>
                         </div>
                     </form>
